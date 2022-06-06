@@ -1,9 +1,9 @@
- <form class="search_box">
+<form class="search_box">
   <mat-form-field appearance="fill">
     <mat-label>From</mat-label>
     <mat-select [(ngModel)]="selectedOrigin" name="origin">
       <mat-option *ngFor="let origin of origins" [value]="origin.origin">
-        {{origin.origin}}
+        {{ origin.origin }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -11,13 +11,19 @@
     <mat-label>To</mat-label>
     <mat-select [(ngModel)]="selectedDestination" name="destination">
       <mat-option *ngFor="let dest of destinations" [value]="dest.destination">
-        {{dest.destination}}
+        {{ dest.destination }}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Travel Dates (Optional)</mat-label>
-    <input matInput [matDatepicker]="picker" matNativeControl [(ngModel)]="selectedDate" name="travel_dates">
+    <input
+      matInput
+      [matDatepicker]="picker"
+      matNativeControl
+      [(ngModel)]="selectedDate"
+      name="travel_dates"
+    />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
@@ -25,59 +31,104 @@
 </form>
 
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    (matSortChange)="announceSortChange($event)"
+  >
+    <!-- Flight No. Column -->
+    <ng-container matColumnDef="flightnumber">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by Flight No."
+      >
+        Flight No.
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.flightnumber }}</td>
+    </ng-container>
 
-  <!-- Flight No. Column -->
-  <ng-container matColumnDef="flightnumber">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Flight No.">
-      Flight No.
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.flightnumber}} </td>
-  </ng-container>
+    <!-- Origin Column -->
+    <ng-container matColumnDef="origin">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by Origin"
+      >
+        Origin
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.origin }}</td>
+    </ng-container>
 
-  <!-- Origin Column -->
-  <ng-container matColumnDef="origin">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Origin">
-      Origin
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.origin}} </td>
-  </ng-container>
+    <!-- Arrival Column -->
+    <ng-container matColumnDef="arrive">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by Arrival"
+      >
+        Arrival
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.arrive | date: "medium" }}
+      </td>
+    </ng-container>
 
-  <!-- Arrival Column -->
-  <ng-container matColumnDef="arrive">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Arrival">
-      Arrival
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.arrive | date:"medium"}} </td>
-  </ng-container>
+    <!-- Destination Column -->
+    <ng-container matColumnDef="destination">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by Destination"
+      >
+        Destination
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.destination }}</td>
+    </ng-container>
 
-  <!-- Destination Column -->
-  <ng-container matColumnDef="destination">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Destination">
-      Destination
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.destination}} </td>
-  </ng-container>
-
-  <!-- Departure Column -->
-  <ng-container matColumnDef="depart">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Departure">
-      Departure
-    </th>
-    <td mat-cell *matCellDef="let element"> {{element.depart | date:"medium"}} </td>
-  </ng-container>
+    <!-- Departure Column -->
+    <ng-container matColumnDef="depart">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by Departure"
+      >
+        Departure
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.depart | date: "medium" }}
+      </td>
+    </ng-container>
 
     <!-- Non-Stop Column -->
     <ng-container matColumnDef="nonstop">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Non-Stop">
-          Non-Stop
-        </th>
-        <td mat-cell *matCellDef="let element"> {{(element.nonstop)?"Yes":"No"}} </td>
-      </ng-container>
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by Non-Stop"
+      >
+        Non-Stop
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nonstop ? "Yes" : "No" }}
+      </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-<mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of flights">
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    class="paginator"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of flights"
+  >
   </mat-paginator>
 </div>
