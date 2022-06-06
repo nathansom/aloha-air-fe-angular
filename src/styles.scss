@@ -15,7 +15,6 @@ body {
 }
 
 header {
-    background-color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -25,6 +24,7 @@ header {
         background-size: cover;
         margin: 10px 20px;
         align-self: flex-start;
+        color: white;
     }
 
     .link_box {

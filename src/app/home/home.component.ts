@@ -1,8 +1,8 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { FlightsService } from '../flights.service';
 import { Flight } from '../flight.model';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +22,7 @@ export class HomeComponent implements AfterViewInit {
 
   displayedColumns: string[] = [];
   dataSource!: MatTableDataSource<Flight>;
+  private _liveAnnouncer: any;
 
   constructor(private flightsServices: FlightsService) {}
 
@@ -52,5 +53,4 @@ export class HomeComponent implements AfterViewInit {
       this.dataSource = new MatTableDataSource<Flight>(data);
     })
   }
-
 }
