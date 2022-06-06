@@ -1,0 +1,22 @@
+nav {
+    padding: 10px 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+        margin: 0 5px;
+    }
+
+    a {
+         text-decoration: none;
+    }
+}
+
+.logo_box {
+    h1 {
+        font-family: 'Lobster', cursive;
+        font-size: 2rem;
+    }
+}

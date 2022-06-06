@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+@import url("../node_modules/@angular/material/prebuilt-themes/indigo-pink.css");
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: url("assets/maldives.webp"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    .logo_box {
+        background-size: cover;
+        margin: 10px 20px;
+        align-self: flex-start;
+    }
+
+    .link_box {
+        align-self: flex-end;
+        border: 1px dotted grey;
+    }
+}
+html, body { height: auto; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

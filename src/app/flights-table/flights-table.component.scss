@@ -1,0 +1,48 @@
+table {
+    width: 100%;
+    position: relative;
+  }
+
+.paginator {
+  margin-bottom: 50px;
+}
+  
+th.mat-sort-header-sorted {
+    color: black;
+  }
+
+table, .mat-elevation-z8, .paginator  {
+  width: 80vw;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+.search_box {
+  position: relative;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 10px auto;
+  padding: 15px 10px 0px 15px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.3);
+  button {
+    height: 52.06px;
+    transform: translateY(-8px);
+    margin: 0 10px;
+  }
+}
+
+@media (max-width:752px) {
+  table, .mat-elevation-z8, .paginator  {
+  width: 90vw;
+}
+.search_box {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+}
+  

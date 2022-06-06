@@ -1,0 +1,23 @@
+table, .mat-elevation-z8, .paginator  {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.search_box {
+  position: relative;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  padding: 15px 10px 0px 15px;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 10px;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.3);
+  button {
+    height: 52.06px;
+    transform: translateY(-8px);
+    margin: 0 10px;
+  }
+}
